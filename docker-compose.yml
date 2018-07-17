@@ -1,4 +1,43 @@
 version '3':
 services:
   app:
-  
+    image: srmklive/nginx-php71
+    restart: unless-stopped
+    volumes:
+        - ./:/server/http
+    networks:
+      webappnet:
+    ports:
+        - "80:80"
+        - "443:443"
+    links:
+        - mysql
+    environment:
+        DEBUG: 'true'
+  mysql:
+    image: mysql:5.7
+    networks:
+      webappnet:
+        aliases:
+          - mysql.local
+    environment:
+      - MYSQL_USER=webapp
+      - MYSQL_PASSWORD=webapp
+      - MYSQL_DATABASE=webapp
+    volumes:
+      - mysqldb:/var/lib/mysql
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    ports:
+      - '3306:3306'
+  redis:
+    image: redis:4
+    networks:
+      webappnet:
+        aliases:
+          - redis.local
+    ports:
+      - "6379:6379"
+volumes:
+  mysqldb:             
+networks:
+  webappnet      

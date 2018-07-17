@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-LABEL maintainer="Raza Mehdi"
+LABEL maintainer="Raza Mehdi<srmk@outlook.com>"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -27,8 +27,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
   && php composer-setup.php --install-dir=/usr/bin --filename=composer \
   && php -r "unlink('composer-setup.php');"  
 
-RUN apt-get -y autoremove \
-  && apt-get clean \
+RUN apt-get -y autoclean \
+  && apt-get -y autoremove \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
   && echo "daemon off;" >> /etc/nginx/nginx.conf
 

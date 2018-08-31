@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
   && apt-get -y install apt-utils \ 
-  && apt-get -y install curl zip unzip git openssl sqlite3 build-essential software-properties-common \
+  && apt-get -y install curl nano zip unzip git openssl sqlite3 build-essential software-properties-common \
   && apt-get -y upgrade
   
 RUN apt-get -y install supervisor gnupg tzdata \
@@ -30,7 +30,8 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
   && php composer-setup.php --install-dir=/usr/bin --filename=composer \
   && php -r "unlink('composer-setup.php');"  
 
-RUN apt-get -y autoclean \
+RUN yarn --global upgrade \
+  && apt-get -y autoclean \
   && apt-get -y autoremove \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

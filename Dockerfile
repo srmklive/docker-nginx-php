@@ -27,8 +27,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
   && php composer-setup.php --install-dir=/usr/bin --filename=composer \
   && php -r "unlink('composer-setup.php');"  
 
-RUN yarn --global upgrade \
-  && apt-get -y autoclean \
+RUN apt-get -y autoclean \
   && apt-get -y autoremove \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

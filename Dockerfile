@@ -15,6 +15,9 @@ RUN apt-get -y install supervisor gnupg tzdata \
 
 RUN add-apt-repository ppa:nginx/stable \
   && add-apt-repository ppa:ondrej/php \
+  && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
   && apt-get update
 
 RUN apt-get -y install nginx nodejs yarn php7.0-fpm php7.0-cli php7.0-curl php7.0-mbstring php7.0-curl \

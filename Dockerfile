@@ -17,7 +17,7 @@ RUN add-apt-repository ppa:nginx/stable \
   && add-apt-repository ppa:ondrej/php \
   && apt-get update
 
-RUN apt-get -y install nginx php7.0-fpm php7.0-cli php7.0-curl php7.0-mbstring php7.0-curl \
+RUN apt-get -y install nginx nodejs yarn php7.0-fpm php7.0-cli php7.0-curl php7.0-mbstring php7.0-curl \
   php7.0-json php7.0-mysql php7.0-pgsql php7.0-gd php7.0-bcmath php7.0-readline php7.0-zip \
   php7.0-imap php7.0-xml php7.0-json php7.0-intl php7.0-soap php7.0-memcached php-xdebug
 

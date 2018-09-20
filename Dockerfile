@@ -14,7 +14,7 @@ RUN add-apt-repository ppa:nginx/stable \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
   && apt-get update
 
-RUN apt-get -y install nginx nodejs yarn openssl php7.1-fpm php7.1-cli php7.1-curl php7.1-mcrypt \
+RUN apt-get -y install nginx nodejs yarn libssl1.1 openssl php7.1-fpm php7.1-cli php7.1-curl php7.1-mcrypt \
   php7.1-mbstring php7.1-zip php7.1-json php7.1-mysql php7.1-pgsql php7.1-gd \
   php7.1-bcmath php7.1-imap php7.1-xml php7.1-json php7.1-intl php7.1-soap \
   php7.1-readline php7.1-memcached php-xdebug

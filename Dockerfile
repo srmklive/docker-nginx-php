@@ -14,7 +14,7 @@ RUN add-apt-repository ppa:nginx/stable \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
   && apt-get update
 
-RUN apt-get -y install nginx nodejs yarn php5.6-fpm php5.6-cli php5.6-curl php5.6-mcrypt \
+RUN apt-get -y install nginx nodejs yarn libssl* openssl php5.6-fpm php5.6-cli php5.6-curl php5.6-mcrypt \
   php5.6-mbstring php5.6-zip php5.6-json php5.6-mysql php5.6-pgsql php5.6-gd \
   php5.6-bcmath php5.6-imap php5.6-xml php5.6-json php5.6-intl php5.6-soap \
   php5.6-readline php5.6-memcached php-xdebug

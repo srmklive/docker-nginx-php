@@ -17,7 +17,7 @@ RUN add-apt-repository ppa:nginx/stable \
 RUN apt-get -y install nginx nodejs yarn libssl1.1 openssl php5.6-fpm php5.6-cli php5.6-curl php5.6-mcrypt \
   php5.6-mbstring php5.6-zip php5.6-json php5.6-mysql php5.6-pgsql php5.6-gd \
   php5.6-bcmath php5.6-imap php5.6-xml php5.6-json php5.6-intl php5.6-soap \
-  php5.6-readline php5.6-memcached php-xdebug
+  php5.6-readline php5.6-memcached php-xdebug php-redis
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
   && php -r "if (hash_file('sha384', 'composer-setup.php') === 'a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \

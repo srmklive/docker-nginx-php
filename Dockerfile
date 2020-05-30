@@ -7,7 +7,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
   && apt-get -y upgrade
   
-RUN add-apt-repository ppa:nginx/stable \
+RUN wget https://nginx.org/keys/nginx_signing.key \
+  && apt-key add nginx_signing.key \
+  && echo "deb https://nginx.org/packages/mainline/ubuntu/ bionic nginx" | tee /etc/apt/sources.list.d/nginx.list \
+  && echo "deb-src https://nginx.org/packages/mainline/ubuntu/ bionic nginx" | tee /etc/apt/sources.list.d/nginx.src.list \
   && add-apt-repository ppa:ondrej/php \
   && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
   && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \

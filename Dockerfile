@@ -20,9 +20,9 @@ RUN apt-get -y install nginx nodejs yarn libssl1.1 openssl php7.1-fpm php7.1-cli
   php7.1-readline php7.1-memcached php-xdebug php-redis
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
-  && php -r "if (hash_file('sha384', 'composer-setup.php') === 'c31c1e292ad7be5f49291169c0ac8f683499edddcfd4e42232982d0fd193004208a58ff6f353fde0012d35fdd72bc394') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \
+  && php -r "if (hash_file('sha384', 'composer-setup.php') === 'a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \
   && php composer-setup.php --install-dir=/usr/bin --filename=composer \
-  && php -r "unlink('composer-setup.php');"  
+  && php -r "unlink('composer-setup.php');"   
 
 RUN npm i npm@latest -g \
   && yarn --global install \

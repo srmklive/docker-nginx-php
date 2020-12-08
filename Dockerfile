@@ -14,10 +14,10 @@ RUN add-apt-repository ppa:nginx/stable \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
   && apt-get update
 
-RUN apt-get -y install nginx nodejs yarn libpcre3 libssl1.1 openssl php7.4-fpm php7.4-cli php7.4-curl php7.4-mbstring \
-  php7.4-json php7.4-mysql php7.4-pgsql php7.4-gd php7.4-bcmath php7.4-readline \
-  php7.4-zip php7.4-imap php7.4-xml php7.4-json php7.4-intl php7.4-soap \
-  php7.4-memcached php-xdebug php-redis
+RUN apt-get -y install nginx nodejs yarn libpcre3 libssl1.1 openssl php8.0-fpm php8.0-cli php8.0-curl php8.0-mbstring \
+  php8.0-json php8.0-mysql php8.0-pgsql php8.0-gd php8.0-bcmath php8.0-readline \
+  php8.0-zip php8.0-imap php8.0-xml php8.0-json php8.0-intl php8.0-soap \
+  php8.0-memcached php-xdebug php-redis
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
   && php -r "if (hash_file('sha384', 'composer-setup.php') === 'a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \

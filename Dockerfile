@@ -14,8 +14,7 @@ RUN add-apt-repository ppa:nginx/stable \
   && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
   && apt-get update
 
-RUN apt-get -y install nginx nodejs yarn libpcre3 \
-  libssl1.1 openssl libargon2-1 libidn2-0 libpcre2-8-0 libxml2 \
+RUN apt-get update && apt-get -y upgrade && apt-get -y install nginx nodejs yarn \
   php8.0-fpm php8.0-cli php8.0-curl php8.0-mbstring \
   php8.0-mysql php8.0-pgsql php8.0-gd php8.0-bcmath php8.0-readline \
   php8.0-zip php8.0-imap php8.0-xml php8.0-intl php8.0-soap \

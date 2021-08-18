@@ -9,12 +9,12 @@ RUN apt-get update \
 
 RUN add-apt-repository ppa:nginx/stable \
   && add-apt-repository ppa:ondrej/php \
-  && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
-  && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
-  && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-  && apt-get update
+  && curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
+  && apt-get update && apt-get -y upgrade
 
-RUN apt-get update && apt-get -y upgrade && apt-get -y install nginx nodejs yarn \
+RUN apt-get -y install nodejs && npm install -g npm && npm install -g yarn
+
+RUN apt-get -y install nginx \
   php7.2-fpm php7.2-cli php7.2-curl php7.2-mbstring php7.2-json \
   php7.2-mysql php7.2-pgsql php7.2-gd php7.2-bcmath php7.2-readline \
   php7.2-zip php7.2-imap php7.2-xml php7.2-json php7.2-intl php7.2-soap \

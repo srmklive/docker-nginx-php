@@ -10,9 +10,7 @@ RUN apt-get update \
 RUN add-apt-repository ppa:nginx/stable \
   && add-apt-repository ppa:ondrej/php \
   && curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
-  && apt-get update
-
-RUN apt-get -y upgrade && apt-get -y upgrade
+  && apt-get update && apt-get -y upgrade
 
 RUN apt-get -y install nodejs && npm install -g npm && npm install -g yarn
 

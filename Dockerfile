@@ -9,10 +9,12 @@ RUN apt-get update \
 
 RUN add-apt-repository ppa:nginx/stable \
   && add-apt-repository ppa:ondrej/php \
-  && curl -sL https://deb.nodesource.com/setup_10.x | bash - \
-  && apt-get update
+  && curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
+  && apt-get update && apt-get -y upgrade
 
-RUN apt-get update && apt-get -y upgrade && apt-get -y install nginx nodejs \
+RUN apt-get -y install nodejs && npm install -g npm && npm install -g yarn
+
+RUN apt-get -y install nginx \
   php7.4-fpm php7.4-cli php7.4-curl php7.4-mbstring php7.4-json \
   php7.4-mysql php7.4-pgsql php7.4-gd php7.4-bcmath php7.4-readline \
   php7.4-zip php7.4-imap php7.4-xml php7.4-json php7.4-intl php7.4-soap \

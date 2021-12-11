@@ -15,10 +15,10 @@ RUN add-apt-repository ppa:nginx/stable \
 RUN apt-get -y install nodejs && npm install -g npm && npm install -g yarn
 
 RUN apt-get -y install nginx \
-  php8.0-fpm php8.0-cli php8.0-curl php8.0-mbstring \
-  php8.0-mysql php8.0-pgsql php8.0-gd php8.0-bcmath php8.0-readline \
-  php8.0-zip php8.0-imap php8.0-xml php8.0-intl php8.0-soap \
-  php8.0-memcached php8.0-xdebug php8.0-redis
+  php8.1-fpm php8.1-cli php8.1-curl php8.1-mbstring \
+  php8.1-mysql php8.1-pgsql php8.1-gd php8.1-bcmath php8.1-readline \
+  php8.1-zip php8.1-imap php8.1-xml php8.1-intl php8.1-soap \
+  php8.1-memcached php8.1-xdebug php8.1-redis
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
   && php -r "if (hash_file('sha384', 'composer-setup.php') === '906a84df04cea2aa72f40b5f787e49f22d4c2f19492ac310e8cba5b96ac8b64115ac402c8cd292b8a03482574915d1a8') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \

@@ -7,8 +7,14 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
   && apt-get -y upgrade
 
-RUN add-apt-repository ppa:nginx/stable \
-  && add-apt-repository ppa:ondrej/php \
+RUN curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
+    | tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
+
+RUN echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \
+http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" \
+    | tee /etc/apt/sources.list.d/nginx.list
+
+RUN add-apt-repository ppa:ondrej/php \
   && curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
   && apt-get update && apt-get -y upgrade
 

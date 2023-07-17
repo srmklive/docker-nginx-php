@@ -26,7 +26,7 @@ RUN apt-get -y install openssl php7.1-fpm php7.1-cli php7.1-curl php7.1-mcrypt \
   php7.1-readline php7.1-memcached php7.1-xdebug php7.1-redis
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
-  && php -r "if (hash_file('sha384', 'composer-setup.php') === '55ce33d7678c5a611085589f1f3ddf8b3c52d662cd01d4ba75c0ee0459970c2200a51f492d557530c71c15d8dba01eae') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \
+  && php -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \
   && php composer-setup.php --install-dir=/usr/bin --filename=composer \
   && php -r "unlink('composer-setup.php');"   
 

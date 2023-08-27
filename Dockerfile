@@ -31,7 +31,16 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
   && php composer-setup.php --install-dir=/usr/bin --filename=composer \
   && php -r "unlink('composer-setup.php');"
 
-RUN apt-get -y autoclean \
+# Laravel Installer
+RUN composer global require laravel/installer
+
+# Symfony Installer
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash \
+&& apt install symdony-cli
+
+RUN apt-get update \
+  && apt-get -y upgrade \
+  && apt-get -y autoclean \
   && apt-get -y autoremove \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

@@ -24,7 +24,7 @@ RUN apt-get -y install nginx \
   php7.4-fpm php7.4-cli php7.4-curl php7.4-mbstring php7.4-json \
   php7.4-mysql php7.4-pgsql php7.4-gd php7.4-bcmath php7.4-readline \
   php7.4-zip php7.4-imap php7.4-xml php7.4-json php7.4-intl php7.4-soap \
-  php7.4-memcached php7.4-xdebug php7.4-redis
+  php7.4-memcached php7.4-xdebug php7.4-redis php7.4-sqlite
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
   && php -r "if (hash_file('sha384', 'composer-setup.php') === 'e21205b207c3ff031906575712edab6f13eb0b361f2085f1f1237b7126d785e826a450292b6cfd1d64d92e6563bbde02') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \

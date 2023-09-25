@@ -10,12 +10,16 @@ RUN apt-get update \
 RUN curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
     | tee /usr/share/keyrings/nginx-archive-keyring.gpg >/dev/null
 
+RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /usr/share/keyrings/nodesource.gpg
+
 RUN echo "deb [signed-by=/usr/share/keyrings/nginx-archive-keyring.gpg] \
 http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" \
     | tee /etc/apt/sources.list.d/nginx.list
 
+RUN NODE_MAJOR=18 && echo "deb [signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" \
+    | tee /etc/apt/sources.list.d/nodesource.list
+
 RUN add-apt-repository ppa:ondrej/php \
-  && curl -sL https://deb.nodesource.com/setup_lts.x | bash - \
   && apt-get update && apt-get -y upgrade
 
 RUN apt-get -y install nodejs && npm install -g npm && npm install -g yarn

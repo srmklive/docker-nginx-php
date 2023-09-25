@@ -40,7 +40,7 @@ RUN composer global require laravel/installer
 
 # Symfony Installer
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash \
-&& apt install symdony-cli
+&& apt install symfony-cli
 
 RUN apt-get update \
   && apt-get -y upgrade \
